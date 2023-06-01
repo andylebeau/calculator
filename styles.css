@@ -10,18 +10,26 @@ body{
 }
 
 .calculator{
-    width: 230px;
+    width: 310px;
 }
 
 .display{
+    width: 310px;
+    background-color: gray;
     text-align: right;
+}
+
+.all-buttons{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 button{
     box-sizing: border-box;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    border-radius: 10px;
     font-size: 30px;
 }
 
@@ -30,6 +38,6 @@ button.clear-all{
 }
 
 button.equals{
-    width: 100px;
-    border-radius: 0%;
+    width: 150px;
+    border-radius: 10px;
 }
