@@ -11,12 +11,13 @@ const userInput = document.querySelectorAll('button')
     })
 
 function doOperator (equation) {
-    let displayResult = ''
+    let displayResult = '';
     const [x, y] = equation.split(/[+,-,x,÷]/)
+    console.log(x, y)
     const operation = equation.match(/[^0-9]/)[0]
     switch (operation) {
         case '+':
-            displayResult = x + y;
+            displayResult = +x + +y;
             break;
         case '-':
             displayResult = x - y;
@@ -27,7 +28,7 @@ function doOperator (equation) {
         case '÷':
             displayResult = x / y;
         default:
-            displayResult = 'ERROR'
+            displayResult = 'ERROR';
     }
     display.textContent = displayResult;
 }
