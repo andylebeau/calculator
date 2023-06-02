@@ -39,7 +39,8 @@ button{
     font-size: 30px;
 }
 
-button.equals{
+button.equals,
+button.clear{
     width: 150px; /* twice the size of other buttons */
     border-radius: 10px;
 }
