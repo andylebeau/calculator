@@ -1,45 +1,9 @@
-// let display = document.querySelector('.display');
-// let num1 = '';
-// let num2 = '';
-// let operator = '';
+// calculator variables in order of appearance from top to bottom
 
-// const userInput = document.querySelectorAll('button')
-//     userInput.forEach((digitPressed) => {
-//         digitPressed.addEventListener('click', () => {
-//             if (digitPressed.value == 'digit' && operator == '') {
-//                 display.textContent = display.textContent + digitPressed.value;
-//             }
-//             if (digitPressed.value == 'operator') {
-//                 num1 = display.textContent
-//                 display.textContent = '';
-//                 operator = digitPressed.value;
-//             }
-//             // if (digitPressed.value == 'digit' && operator != '') {
-//             //     display.textContent = display.textContent + digitPressed.value;
-//             // }
-//             // if (digitPressed.value == 'operator' && num1 != '') {
-//             //     num2 = display.textContent
-//             //     num1 = doOperator(num1, operator, num2)
-//             // }
-//         })
-//     })
+const output = document.querySelector('[data-ouput]')
+const clearAll = document.querySelector('[data-clear]');
+const backspace = document.querySelector('[data-backspace]');
+const operatorBtns = document.querySelectorAll('[data-operator]');
+const digitsBtns = document.querySelectorAll('[data-digit]');
+const equals = document.querySelector('[data-equals]');
 
-// function doOperator (x, o, y) {
-//     let displayResult = '';
-//     switch (o) {
-//         case '+':
-//             displayResult = +x + +y;
-//             break;
-//         case '-':
-//             displayResult = x - y;
-//             break;
-//         case 'x':
-//             displayResult = x * y;
-//             break;
-//         case '÷':
-//             displayResult = x / y;
-//         default:
-//             displayResult = 'ERROR';
-//     }
-//     return displayResult;
-// }
