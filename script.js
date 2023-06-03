@@ -19,26 +19,47 @@ class Calculator {
 
     }
 
-    chooseOperator(operation) {
-        if (this.currentNum === '') {return}
+    chooseOperator(operator) {
+        if (this.currentNum == '') {return};
         if (this.previousNum != '') {
-            this.compute()
-        }
-        this.operator = operation
-        this.previousNum = this.currentNum
-        this.currentNum = ''
-
+            this.compute();
+        };
+        this.operator = operator;
+        this.previousNum = this.currentNum;
+        this.currentNum = '';
     }
 
     appendDigit(number) {
-        if (number === '.' && this.currentNum.includes('.')) {return}
+        if (number == '.' && this.currentNum.includes('.')) {return}
         this.currentNum += number
     }
 
     compute() {
-        x = +this.previousNum
-        y = +this.currentNum
-        if (currentNum === '' || previousNum === '') {return}
+        let computeResult
+        const x = +this.previousNum
+        const y = +this.currentNum
+        console.log(x, this.operator, y)
+        if (isNaN(x) || isNaN(y)) {return}
+
+        switch (this.operator) {
+            case '+':
+                computeResult = x + y;
+                break;
+            case '-':
+                computeResult = x - y;
+                break;
+            case 'x':
+                computeResult = x * y;
+                break;
+            case '÷':
+                computeResult = x / y;
+                break;
+            default:
+                'Error';
+        }
+        this.currentNum = computeResult
+        this.operator = undefined
+        this.previousNum = ''
     }
 }
 
@@ -69,5 +90,11 @@ operatorBtns.forEach(button => {
 
 equalsBtn.addEventListener('click', button => {
     calculator.compute()
+    calculator.updateDisplay()
+})
+
+clearAllBtn.addEventListener('click', button => {
+    console.log('clear all pressed')
+    calculator.clearAll()
     calculator.updateDisplay()
 })
