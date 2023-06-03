@@ -16,7 +16,8 @@ class Calculator {
     }
 
     backspace() {
-
+        this.currentNum = this.currentNum.slice(0,-1)
+        this.updateDisplay()
     }
 
     chooseOperator(operator) {
@@ -94,7 +95,10 @@ equalsBtn.addEventListener('click', button => {
 })
 
 clearAllBtn.addEventListener('click', button => {
-    console.log('clear all pressed')
     calculator.clearAll()
     calculator.updateDisplay()
+})
+
+backspaceBtn.addEventListener('click', button =>{
+    calculator.backspace()
 })
