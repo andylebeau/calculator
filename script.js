@@ -12,11 +12,13 @@ class Calculator {
     }
 
     updateDisplay() {
+        console.log(this.currentNum)
         this.currentNumText.textContent = this.currentNum;
     }
 
     backspace() {
         if (this.currentNum == '' || typeof this.currentNum == 'number') {return};
+        if (this.currenNum == 'Error') {this.clearAll()}
         this.currentNum = this.currentNum.slice(0,-1);
     }
 
@@ -24,6 +26,7 @@ class Calculator {
         if (this.currentNum == '') {return};
         if (this.previousNum != '') {
             this.compute();
+            this.updateDisplay()
         };
         this.operator = operator;
         this.previousNum = this.currentNum;
@@ -32,39 +35,37 @@ class Calculator {
 
     appendDigit(number) {
         if (number == '.' && this.currentNum.includes('.')) {return};
-        if (typeof this.currentNum == 'number') {this.currentNum = ''};
+        if (typeof this.currentNum == 'number' || this.currentNum == 'Error' || this.previousNum == 'Error') {this.currentNum = ''};
         this.currentNum += number;
     }
 
     compute() {
         let computeResult;
-        const x = +this.previousNum;
+        const x = +this.previousNum 
         const y = +this.currentNum;
         console.log(x, this.operator, y)
         if (isNaN(x) || isNaN(y)) {return}
 
         switch (this.operator) {
             case '+':
-                computeResult = x + y;
+                computeResult = x + y
                 break;
             case '-':
-                computeResult = x - y;
+                computeResult = x - y
                 break;
             case 'x':
-                computeResult = x * y;
+                computeResult = x * y
                 break;
             case '÷':
-                if (y != 0) {
-                    computeResult = x / y;
-                }
+                computeResult = (y == 0) ? 'Error' : x / y
                 break;
             default:
-                computeResult = 'Error';
+                computeResult = 'Error'
         }
         this.currentNum = computeResult;
         this.operator = undefined;
         this.previousNum = '';
-        console.log(typeof this.currentNum)
+        console.log(computeResult)
     }
 }
 
