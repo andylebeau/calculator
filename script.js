@@ -16,8 +16,8 @@ class Calculator {
     }
 
     backspace() {
+        if (this.currentNum == '' || typeof(this.currentNum == 'number')) {return}
         this.currentNum = this.currentNum.slice(0,-1)
-        this.updateDisplay()
     }
 
     chooseOperator(operator) {
@@ -85,7 +85,6 @@ digitsBtns.forEach(button => {
 operatorBtns.forEach(button => {
     button.addEventListener('click', () => {
         calculator.chooseOperator(button.textContent)
-        calculator.updateDisplay()
     })
 })
 
@@ -101,4 +100,5 @@ clearAllBtn.addEventListener('click', button => {
 
 backspaceBtn.addEventListener('click', button =>{
     calculator.backspace()
+    calculator.updateDisplay()
 })
