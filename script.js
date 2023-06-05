@@ -35,15 +35,24 @@ class Calculator {
 
     appendDigit(number) {
         if (number == '.' && this.currentNum.includes('.')) {return};
-        if (typeof this.currentNum == 'number' || this.currentNum == 'Error' || this.previousNum == 'Error') {this.currentNum = ''};
+        if (typeof this.currentNum == 'number' ||
+                   this.currentNum == 'Error')
+                  {this.currentNum = ''};
         this.currentNum += number;
+    }
+
+    getDecimalFloat() {
+        const xFloat = `${this.previousNum}`.includes('.') ? `${this.previousNum}`.split('.')[1] : 0;
+        const yFloat = `${this.currentNum}`.includes('.') ? `${this.currentNum}`.split('.')[1] : 0;
+        return Math.max(xFloat, yFloat);
     }
 
     compute() {
         let computeResult;
-        const x = +this.previousNum 
-        const y = +this.currentNum;
-        console.log(x, this.operator, y)
+        let decimalFloat = this.getDecimalFloat()
+        const x = +this.previousNum
+        const y = +this.currentNum
+
         if (isNaN(x) || isNaN(y)) {return}
 
         switch (this.operator) {
@@ -62,10 +71,11 @@ class Calculator {
             default:
                 computeResult = 'Error'
         }
-        this.currentNum = computeResult;
+        if (typeof computeResult == 'number') {
+            this.currentNum = +(computeResult.toFixed(decimalFloat))
+        }
         this.operator = undefined;
         this.previousNum = '';
-        console.log(computeResult)
     }
 }
 
