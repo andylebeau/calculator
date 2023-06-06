@@ -22,7 +22,7 @@ class Calculator {
         this.currentNum = this.currentNum.slice(0,-1);
     }
 
-    chooseOperator(operator) {
+    chooseOperation(operator) {
         if (this.currentNum == '') {return};
         if (this.previousNum != '') {
             this.compute();
@@ -52,6 +52,7 @@ class Calculator {
         let decimalFloat = this.getDecimalFloat()
         const x = +this.previousNum
         const y = +this.currentNum
+        console.log (x, this.operator, y)
 
         if (isNaN(x) || isNaN(y)) {return}
 
@@ -73,9 +74,30 @@ class Calculator {
         }
         if (typeof computeResult == 'number') {
             this.currentNum = +(computeResult.toFixed(decimalFloat))
-        }
+        } else {this.currentNum = computeResult}
         this.operator = undefined;
         this.previousNum = '';
+    }
+
+    useKeyboard(event) {
+        const operators = ['÷', 'x', '-', '+'];
+        if (operators.includes(event.key)) {
+            calculator.chooseOperation(event.key)
+            return;
+        }
+        if (event.key == '=' || event.key == 'Enter') {
+            calculator.compute();
+        }
+        if (/\d/.test(event.key) || event.key == '.') {
+            calculator.appendDigit(event.key)
+        }
+        if (event.key == 'Backspace') {
+            calculator.backspace();
+        }
+        if (event.key == 'Escape') {
+            calculator.clearAll();
+        }
+        calculator.updateDisplay();
     }
 }
 
@@ -99,7 +121,7 @@ digitsBtns.forEach(button => {
 
 operatorBtns.forEach(button => {
     button.addEventListener('click', () => {
-        calculator.chooseOperator(button.textContent);
+        calculator.chooseOperation(button.textContent);
     });
 });
 
@@ -117,3 +139,7 @@ backspaceBtn.addEventListener('click', button => {
     calculator.backspace();
     calculator.updateDisplay();
 });
+
+window.addEventListener('keydown', calculator.useKeyboard)
+
+

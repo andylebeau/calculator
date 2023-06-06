@@ -16,13 +16,14 @@ body{
 }
 
 .num{
-    background-color: gray;
+    background-color: lightyellow;
     height: 80px;
     text-align: right;
     font-size: 70px;
     margin-bottom: 15px;
     padding-right: 10px;
     border-radius: 10px;
+    border: 2px solid rgb(91, 83, 83)
 }
 
 .row {
@@ -37,9 +38,21 @@ button{
     height: 70px;
     border-radius: 10px;
     font-size: 30px;
+    background-color: lightyellow;
 }
 
 .large-btn{
     width: 150px; /* twice the size of other buttons */
     border-radius: 10px;
+    background-color: green;
+    color: white;
+}
+
+.clear {
+    background-color: maroon;
+    color: white;
+}
+
+.operator {
+    background-color: darkorange;
 }
