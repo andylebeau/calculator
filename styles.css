@@ -15,15 +15,20 @@ body{
     width: 310px;
 }
 
-.num{
+.output{
     background-color: lightyellow;
     height: 80px;
     text-align: right;
+    overflow: hidden;
     font-size: 70px;
     margin-bottom: 15px;
     padding-right: 10px;
     border-radius: 10px;
     border: 2px solid rgb(91, 83, 83)
+}
+
+.num{
+    float: right;
 }
 
 .row {
