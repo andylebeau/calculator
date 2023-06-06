@@ -23,7 +23,7 @@ body{
     font-size: 70px;
     margin-bottom: 15px;
     padding-right: 10px;
-    border-radius: 10px;
+    /* border-radius: 10px; */
     border: 2px solid rgb(91, 83, 83)
 }
 
@@ -44,6 +44,13 @@ button{
     border-radius: 10px;
     font-size: 30px;
     background-color: lightyellow;
+    transition: all 0.3s;
+}
+
+button:hover{
+    font-size: 55px;
+    border-color: black;
+    border-radius: 5px;
 }
 
 .large-btn{

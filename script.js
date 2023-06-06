@@ -12,7 +12,6 @@ class Calculator {
     }
 
     updateDisplay() {
-        console.log(this.currentNum)
         this.currentNumText.textContent = this.currentNum;
     }
 
@@ -26,7 +25,7 @@ class Calculator {
         if (this.currentNum == '') {return};
         if (this.previousNum != '') {
             this.compute();
-            this.updateDisplay()
+            this.updateDisplay();
         };
         this.operator = operator;
         this.previousNum = this.currentNum;
@@ -49,12 +48,11 @@ class Calculator {
 
     compute() {
         let computeResult;
-        let decimalFloat = this.getDecimalFloat()
-        const x = +this.previousNum
-        const y = +this.currentNum
-        console.log (x, this.operator, y)
+        let decimalFloat = this.getDecimalFloat();
+        const x = +this.previousNum;
+        const y = +this.currentNum;
 
-        if (isNaN(x) || isNaN(y)) {return}
+        if (isNaN(x) || isNaN(y) || !this.operator) {return};
 
         switch (this.operator) {
             case '+':
@@ -67,14 +65,14 @@ class Calculator {
                 computeResult = x * y
                 break;
             case '÷':
-                computeResult = (y == 0) ? 'Error' : x / y
+                computeResult = (y == 0) ? '..OUCH..' : x / y
                 break;
             default:
                 computeResult = 'Error'
         }
-        if (typeof computeResult == 'number') {
-            this.currentNum = +(computeResult.toFixed(decimalFloat))
-        } else {this.currentNum = computeResult}
+        typeof computeResult == 'number'
+                ? this.currentNum = +(computeResult.toFixed(decimalFloat))
+                : this.currentNum = computeResult;
         this.operator = undefined;
         this.previousNum = '';
     }
